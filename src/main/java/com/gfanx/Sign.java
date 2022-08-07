@@ -3,7 +3,6 @@ package com.gfanx;
 
 import com.utils.AbiContractUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.brewchain.mcore.crypto.impl.EncInstance;
 import org.brewchain.sdk.util.CryptoUtil;
 
 import java.math.BigInteger;

@@ -4,8 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.config.Config;
 import com.utils.AbiContractUtil;
 import com.utils.HttpClientUtil;
-import org.brewchain.mcore.crypto.impl.EncInstance;
-import org.brewchain.sdk.util.CryptoUtil;
 
 import java.math.BigInteger;
 import java.util.HashMap;
@@ -20,7 +18,7 @@ public class Account {
     /**
      * 获取账户信息
      * @param address 地址
-     * @return
+     * @return JSONObject
      */
     public static JSONObject accountInfo(String address) {
         AbiContractUtil.encInstance();

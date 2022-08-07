@@ -60,9 +60,9 @@ public class ReadJsonUtil {
     /**
      * 获取JSON文件中指定属性值
      *
-     * @param path
-     * @param param
-     * @return
+     * @param path 文件路径
+     * @param param 属性值
+     * @return String
      */
     public static String getJson(String path, String param) {
         if ("".equals(path) || "".equals(param)) {
