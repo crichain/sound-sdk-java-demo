@@ -34,13 +34,13 @@ public class AbiContractUtil {
         encInstance.startup();
         CryptoUtil.crypto = encInstance;
         //通过私钥获取地址
-        KeyPairs keyPairs = CryptoUtil.privatekeyToAccountKey(Config.privateKey);
+        KeyPairs keyPairs = CryptoUtil.privatekeyToAccountKey(Config.getPrivateKey());
         String address = keyPairs.getAddress();
         //组装查询bincode
-        String functionBinCode = org.brewchain.sdk.util.ContractUtil.getFunctionBinCode(Config.abi, searchMethod, args);
+        String functionBinCode = org.brewchain.sdk.util.ContractUtil.getFunctionBinCode(Config.getAbi(), searchMethod, args);
         log.info(searchMethod + "-functionBinCode---" + functionBinCode);
         //执行合约
-        String contractCallTx = HiChain.getContractCallTx(address, Account.getNonce(address), Config.privateKey, contractAddr, functionBinCode, "");
+        String contractCallTx = HiChain.getContractCallTx(address, Account.getNonce(address), Config.getPrivateKey(), contractAddr, functionBinCode, "");
         log.info(searchMethod + "-contractCallTx---" + contractCallTx);
         return contractCallTx;
     }
@@ -69,7 +69,7 @@ public class AbiContractUtil {
         }else{
             params.put("data", data);
         }
-        return HttpClientUtil.doPost(Config.url + "/chain/callcontract.json", params);
+        return HttpClientUtil.doPost(Config.getUrl() + "/chain/callcontract.json", params);
     }
     /**
      * 创建实例

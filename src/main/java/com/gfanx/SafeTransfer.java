@@ -29,16 +29,16 @@ public class SafeTransfer {
         //金额转换
         amount = AbiContractUtil.amountTransition(amount);
         //根据私钥获取地址
-        KeyPairs keyPairs = CryptoUtil.privatekeyToAccountKey(Config.privateKey);
+        KeyPairs keyPairs = CryptoUtil.privatekeyToAccountKey(Config.getPrivateKey());
         String address = keyPairs.getAddress();
         //创建实例并生成转账txData
         TransferInfo transferInfo = new TransferInfo(toAddress, amount);
-        String transferToTx = HiChain.getTransferToTx(address, Account.getNonce(address), Config.privateKey, exData, transferInfo);
+        String transferToTx = HiChain.getTransferToTx(address, Account.getNonce(address), Config.getPrivateKey(), exData, transferInfo);
         log.info("转账txData:" + transferToTx);
         //发送请求
         HashMap<String, Object> params = new HashMap<>();
         params.put("txData", transferToTx);
-        JSONObject result = HttpClientUtil.doPost(Config.url + "/chain/transferCric.json", params);
+        JSONObject result = HttpClientUtil.doPost(Config.getUrl() + "/chain/transferCric.json", params);
         return result;
     }
 
@@ -51,7 +51,7 @@ public class SafeTransfer {
     public static JSONObject transferInfo(String hash) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("hash", hash);
-        JSONObject result = HttpClientUtil.doGet(Config.url + "/chain/transaction.json", params);
+        JSONObject result = HttpClientUtil.doGet(Config.getUrl() + "/chain/transaction.json", params);
         log.info("交易信息请求结果为：{}", result);
         return result;
     }

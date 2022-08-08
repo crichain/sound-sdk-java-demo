@@ -1,24 +1,24 @@
 package com.config;
 
-import com.utils.ReadJsonUtil;
+
 
 public class Config {
     /**
      * 私钥
      */
-    public static String privateKey;
+    private static String privateKey;
     /**
      * url地址
      */
-    public static String url;
+    private static String url;
     /**
      * abi
      */
-    public static String abi;
+    private static String abi;
     /**
      * 合约地址
      */
-    public static String contractAddr;
+    private static String contractAddr;
 
     private Config(){
 
@@ -62,5 +62,21 @@ public class Config {
      */
     public static void init(String privateKey) {
         Config.privateKey = privateKey;
+    }
+
+    public static String getPrivateKey() {
+        return privateKey;
+    }
+
+    public static String getUrl() {
+        return url;
+    }
+
+    public static String getAbi() {
+        return abi;
+    }
+
+    public static String getContractAddr() {
+        return contractAddr;
     }
 }
