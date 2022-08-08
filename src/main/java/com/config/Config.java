@@ -3,11 +3,22 @@ package com.config;
 import com.utils.ReadJsonUtil;
 
 public class Config {
-
-    public static String privateKey = "be0883ca6649e4fc242d3ac593d9d97d27a96aa4f17c9f4a294fb73cc15d8ec5";
-    public static String url = "http://172.16.60.138:3001/";
-    public static String abi = ReadJsonUtil.getJson("src/main/resources/MyNft.json", "abi");
-    public static String contractAddr = "0xce7e273ed4081e6309664734dc7a162e2e20e6cd";
+    /**
+     * 私钥
+     */
+    public static String privateKey;
+    /**
+     * url地址
+     */
+    public static String url;
+    /**
+     * abi
+     */
+    public static String abi;
+    /**
+     * 合约地址
+     */
+    public static String contractAddr;
 
     private Config(){
 

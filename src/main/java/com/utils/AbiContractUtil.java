@@ -10,7 +10,10 @@ import org.brewchain.sdk.HiChain;
 import org.brewchain.sdk.util.CryptoUtil;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * @author admin
@@ -50,19 +53,24 @@ public class AbiContractUtil {
      * @param args         参数数组
      * @return JSONObject
      */
-    public static JSONObject sendData(String contractAddr, String searchMethod,String operateId,String functionType,Object... args ) {
+    public static JSONObject sendData(String contractAddr, String searchMethod, String operateId,String contractCode, String functionType, Object... args) {
         //获取data
         String data = AbiContractUtil.getData(contractAddr, searchMethod, args);
         //发送请求
         HashMap<String, Object> params = new HashMap<>();
         params.put("method", searchMethod);
         params.put("data", data);
-        params.put("functionType",functionType);
-        params.put("contractCode", "NFT_A");
-        params.put("operateId",operateId);
+        params.put("functionType", functionType);
+        params.put("contractCode",contractCode);
+        params.put("operateId", operateId);
+        if ("view".equals(functionType)){
+            params.put("contractAddress", contractAddr);
+            params.put("params", args);
+        }else{
+            params.put("data", data);
+        }
         return HttpClientUtil.doPost(Config.url + "/chain/callcontract.json", params);
     }
-
     /**
      * 创建实例
      */
@@ -81,5 +89,33 @@ public class AbiContractUtil {
     public static String amountTransition(String amount) {
         BigDecimal bigDecimal = new BigDecimal(amount).multiply(new BigDecimal("1000000000000000000"));
         return bigDecimal.stripTrailingZeros().toPlainString();
+    }
+
+    /**
+     * 获取OpreateId
+     *
+     * @return String
+     */
+    public static String getOpreateId() {
+        //获取当前时间
+        String currentTime = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
+        //随机数
+        String random = sevenDigitRandomNumber();
+        return currentTime + random;
+    }
+
+    /**
+     * 七位随机数
+     *
+     * @return String
+     */
+    public static String sevenDigitRandomNumber() {
+        Random random = new Random();
+        String num = random.nextInt(9999999) + "";
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < 7 - num.length(); i++) {
+            sb.append("0");
+        }
+        return sb.toString() + num;
     }
 }
