@@ -3,6 +3,7 @@ package com.gfanx;
 
 import com.alibaba.fastjson.JSONObject;
 
+import com.develop.mnemonic.utils.Numeric;
 import org.junit.Test;
 
 import java.math.BigInteger;
@@ -15,7 +16,7 @@ public class ContractTest {
      */
     @Test
     public void safeMint() {
-        JSONObject result = Contract.safeMint("514f2b69fc3102829a25dba16575680f049a0932", "safeMint", "123123", "NFT_A", new BigInteger("514f2b69fc3102829a25dba16575680f049a0932", 16), new BigInteger("123123"), "https://ipfs.infura.io/ipfs/QmbApAkdkGj4jFu6Jr2thcNHraRBYJ7nEL7cvpabM7bLcK");
+        JSONObject result = Contract.safeMint("0x514f2b69fc3102829a25dba16575680f049a0932", "safeMint", "123123", "NFT_A", new BigInteger(Numeric.cleanHexPrefix("0x514f2b69fc3102829a25dba16575680f049a0932"), 16), new BigInteger("123123"), "https://ipfs.infura.io/ipfs/QmbApAkdkGj4jFu6Jr2thcNHraRBYJ7nEL7cvpabM7bLcK");
         System.out.println(result);
     }
 
@@ -24,7 +25,7 @@ public class ContractTest {
      */
     @Test
     public void burn() {
-        JSONObject result = Contract.burn("514f2b69fc3102829a25dba16575680f049a0932", "burn", "123123", "NFT_A", new BigInteger("123123"));
+        JSONObject result = Contract.burn("0x514f2b69fc3102829a25dba16575680f049a0932", "burn", "123123", "NFT_A", new BigInteger("123123"));
         System.out.println(result);
     }
 
@@ -60,7 +61,7 @@ public class ContractTest {
      */
     @Test
     public void safeTransfer() {
-        JSONObject result = Contract.safeTransfer("06e81b2bc890f56d496e9938f1a8769518496d24", "safeTransfer", "123123", "NFT_A", new BigInteger("514f2b69fc3102829a25dba16575680f049a0932", 16), new BigInteger("06e81b2bc890f56d496e9938f1a8769518496d24", 16), new BigInteger("123123"));
+        JSONObject result = Contract.safeTransfer("0x06e81b2bc890f56d496e9938f1a8769518496d24", "safeTransfer", "123123", "NFT_A", new BigInteger("514f2b69fc3102829a25dba16575680f049a0932", 16), new BigInteger("06e81b2bc890f56d496e9938f1a8769518496d24", 16), new BigInteger("123123"));
         System.out.println(result);
     }
 

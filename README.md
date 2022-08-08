@@ -35,25 +35,11 @@
 /**
      * 初始化
      * @param privateKey 私钥
-     * @param url 地址
+     * @param url 接口请求地址
      * @param abi abi合约
      * @param contractAddr 合约地址
      */
-Config.init("be0883ca6649e4fc242d3ac593d9d97d27a96aa4f17c9f4a294fb73cc15d8ec5","http://test.open-api.crichain.cn","[
-    {
-      "inputs": [],
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "owner",
-          "type": "address"
-        }]","0xce7e273ed4081e6309664734dc7a162e2e20e6cd")
+Config.init("be2xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","http://test.open-api.crichain.cn",ReadJsonUtil.getJson("src/main/resources/MyNft.json", "abi"),"0xxxxxxxxxxxxxxxxxxxxxxxx")
 ```
 
 ##### 获取abi
@@ -93,6 +79,19 @@ String opreateId = AbiContractUtil.getOpreateId();
         String address = keyPair.getAddress();
 ```
 
+##### 去除地址前缀0x
+
+```java
+/**
+	*去除地址前缀
+	*
+	*@param input 地址
+	*/
+string result = Numeric.cleanHexPrefix("514f2b69fc3102829a25dba16575680f049a0932");
+```
+
+
+
 ##### 签名
 
 ```Java
@@ -102,7 +101,7 @@ String opreateId = AbiContractUtil.getOpreateId();
      * @param privateKey 私钥
      * @param text       文本
      */
-String result = Sign.sign("b046347a995c3131c99fc5cf9e29ee4f7721e9b5ff06397df4eab597d08a9ef1", "123123");
+String result = Sign.sign("b0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "123123");
 ```
 
 ##### 获取账户信息
@@ -147,7 +146,7 @@ JSONObject result = SafeTransfer.safeTransfer("61d4c124df65ba081992ff2a8c77c67a8
      *【String】 url
      * @return JSONObject
      */
-JSONObject result = Contract.safeMint("514f2b69fc3102829a25dba16575680f049a0932", "safeMint", "123132","NFT_A", new BigInteger("514f2b69fc3102829a25dba16575680f049a0932",16), new BigInteger("123123"), "https://ipfs.infura.io/ipfs/QmbApAkdkGj4jFu6Jr2thcNHraRBYJ7nEL7cvpabM7bLcK");
+JSONObject result = Contract.safeMint("0x514f2b69fc3102829a25dba16575680f049a0932", "safeMint", "123132","NFT_A", new BigInteger(Numeric.cleanHexPrefix("0x514f2b69fc3102829a25dba16575680f049a0932"), 16), new BigInteger("123123"), "https://ipfs.infura.io/ipfs/QmbApAkdkGj4jFu6Jr2thcNHraRBYJ7nEL7cvpabM7bLcK");
 ```
 
 ##### 销毁
@@ -163,7 +162,7 @@ JSONObject result = Contract.safeMint("514f2b69fc3102829a25dba16575680f049a0932"
      *【BigInteger】tokenID 
      * @return JSONObject
      */
-JSONObject result = Contract.burn("514f2b69fc3102829a25dba16575680f049a0932", "burn","123132","NFT_A",new BigInteger("123123"));
+JSONObject result = Contract.burn("0x514f2b69fc3102829a25dba16575680f049a0932", "burn","123132","NFT_A",new BigInteger("123123"));
 ```
 
 ##### 转账
@@ -181,7 +180,7 @@ JSONObject result = Contract.burn("514f2b69fc3102829a25dba16575680f049a0932", "b
      *【Biginteger】tokenID
      * @return JSONObject
      */
-JSONObject result = Contract.safeTransfer("0xce7e273ed4081e6309664734dc7a162e2e20e6cd", "safeTransfer","123132","NFT_A", new BigInteger("514f2b69fc3102829a25dba16575680f049a0932", 16), new BigInteger("61d4c124df65ba081992ff2a8c77c67a8b3cb77c", 16), new BigInteger("123123"));
+JSONObject result = Contract.safeTransfer("0xce7e273ed4081e6309664734dc7a162e2e20e6cd", "safeTransfer","123132","NFT_A", new BigInteger(Numeric.cleanHexPrefix("0x514f2b69fc3102829a25dba16575680f049a0932"), 16), new BigInteger(Numeric.cleanHexPrefix("0x61d4c124df65ba081992ff2a8c77c67a8b3cb77c"), 16), new BigInteger("123123"));
 ```
 
 ##### TokenUrl地址
@@ -197,5 +196,5 @@ JSONObject result = Contract.safeTransfer("0xce7e273ed4081e6309664734dc7a162e2e2
      *【BigInteger】 tokenID
      * @return JSONObject
      */
-JSONObject result = Contract.tokenUrl("514f2b69fc3102829a25dba16575680f049a0932", "tokenURI","123132","NFT_A",new BigInteger("123123"));
+JSONObject result = Contract.tokenUrl("0x514f2b69fc3102829a25dba16575680f049a0932", "tokenURI","123132","NFT_A",new BigInteger("123123"));
 ```

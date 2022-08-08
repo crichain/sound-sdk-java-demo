@@ -26,6 +26,6 @@ public class KeyPair {
         log.info("地址：{}","0x"+kp.getAddress());
         log.info("公钥：{}",kp.getPubkey());
         log.info("私钥：{}",kp.getPrikey());
-        return new KeyPairEntity(words,kp.getPrikey(),kp.getPubkey(),kp.getAddress());
+        return new KeyPairEntity(words,kp.getPrikey(),kp.getPubkey(),"0x"+kp.getAddress());
     }
 }

@@ -8,7 +8,7 @@ public class Config {
      */
     private static String privateKey;
     /**
-     * url地址
+     * url接口请求地址
      */
     private static String url;
     /**
@@ -26,7 +26,7 @@ public class Config {
     /**
      * 初始化
      * @param privateKey 私钥
-     * @param url 地址
+     * @param url 接口请求地址
      * @param abi abi合约
      * @param contractAddr 合约地址
      */
@@ -38,7 +38,7 @@ public class Config {
     /**
      * 初始化
      * @param privateKey 私钥
-     * @param url 地址
+     * @param url 接口请求地址
      * @param abi abi合约
      */
     public static void init(String privateKey, String url, String abi) {
@@ -49,7 +49,7 @@ public class Config {
     /**
      * 初始化
      * @param privateKey 私钥
-     * @param url 地址
+     * @param url 接口请求地址
      */
     public static void init(String privateKey, String url) {
         init(privateKey);

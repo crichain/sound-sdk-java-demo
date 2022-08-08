@@ -72,4 +72,26 @@ public class ReadJsonUtil {
         JSONObject json = JSON.parseObject(jsonFile);
         return json.getString(param);
     }
+
+    /**
+     * 获取abi数组中指定方法的FunctionType
+     * @param path 文件路径
+     * @param searchMethod 方法名
+     * @return String
+     */
+    public static String getFunctionType(String path, String searchMethod){
+        if ("".equals(path) || "".equals(searchMethod)) {
+            return null;
+        }
+        String jsonFile = readJsonFile(path);
+        JSONObject json = JSON.parseObject(jsonFile);
+        JSONArray abi = json.getJSONArray("abi");
+        for (int i = 0; i < abi.size(); i++) {
+            JSONObject jsonObject = abi.getJSONObject(i);
+            if (searchMethod.equals(jsonObject.getString("name"))){
+                return jsonObject.getString("stateMutability");
+            }
+        }
+        return null;
+    }
 }
