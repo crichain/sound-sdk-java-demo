@@ -1,4 +1,4 @@
-package com.crichain.sdk.gfanx;
+package com.crichain.sdk.crichain;
 
 import com.crichain.sdk.entity.KeyPairEntity;
 import org.junit.Test;

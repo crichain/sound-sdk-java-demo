@@ -1,4 +1,4 @@
-package com.crichain.sdk.gfanx;
+package com.crichain.sdk.crichain;
 
 import com.alibaba.fastjson.JSONObject;
 import com.crichain.sdk.config.Config;

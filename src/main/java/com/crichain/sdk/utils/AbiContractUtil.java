@@ -2,7 +2,7 @@ package com.crichain.sdk.utils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.crichain.sdk.config.Config;
-import com.crichain.sdk.gfanx.Account;
+import com.crichain.sdk.crichain.Account;
 import lombok.extern.slf4j.Slf4j;
 import org.brewchain.mcore.crypto.KeyPairs;
 import org.brewchain.mcore.crypto.impl.EncInstance;
