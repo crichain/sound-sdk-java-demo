@@ -1,4 +1,4 @@
-package com.entity;
+package com.crichain.sdk.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

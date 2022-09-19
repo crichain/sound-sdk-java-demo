@@ -1,4 +1,4 @@
-package com.gfanx;
+package com.crichain.sdk.gfanx;
 
 import org.junit.Test;
 

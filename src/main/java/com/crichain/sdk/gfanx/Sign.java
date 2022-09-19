@@ -1,7 +1,7 @@
-package com.gfanx;
+package com.crichain.sdk.gfanx;
 
 
-import com.utils.AbiContractUtil;
+import com.crichain.sdk.utils.AbiContractUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.brewchain.sdk.util.CryptoUtil;
 

@@ -1,9 +1,9 @@
-package com.gfanx;
+package com.crichain.sdk.gfanx;
 
 import com.alibaba.fastjson.JSONObject;
-import com.config.Config;
-import com.utils.AbiContractUtil;
-import com.utils.HttpClientUtil;
+import com.crichain.sdk.config.Config;
+import com.crichain.sdk.utils.AbiContractUtil;
+import com.crichain.sdk.utils.HttpClientUtil;
 
 import java.math.BigInteger;
 import java.util.HashMap;

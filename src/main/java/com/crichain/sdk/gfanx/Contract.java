@@ -1,8 +1,11 @@
-package com.gfanx;
+package com.crichain.sdk.gfanx;
 
 import com.alibaba.fastjson.JSONObject;
-import com.utils.AbiContractUtil;
+import com.develop.mnemonic.utils.Numeric;
+import com.crichain.sdk.utils.AbiContractUtil;
 import lombok.extern.slf4j.Slf4j;
+
+import java.math.BigInteger;
 
 
 /**
@@ -38,6 +41,28 @@ public class Contract {
      * @return JSONObject
      */
     public static JSONObject safeMint(String contractAddr, String searchMethod, String operateId, String contractCode, Object... args) {
+        JSONObject result = AbiContractUtil.sendData(contractAddr, searchMethod, operateId, contractCode, "tx", args);
+        log.info("铸造请求返回结果：{}", result);
+        return result;
+    }
+
+    /**
+     * 铸造
+     *
+     * @param contractAddr 合约地址
+     * @param operateId    操作Id
+     * @param address      铸造地址
+     * @param tokenId      tokenId
+     * @param uri          uri
+     * @return result
+     */
+    public static JSONObject safeMint(String contractAddr, String operateId, String address, String tokenId, String uri) {
+        Object[] args = new Object[]{
+                new BigInteger(Numeric.cleanHexPrefix(address), 16),
+                new BigInteger(tokenId), uri};
+
+        String contractCode = "NFT_A";
+        String searchMethod = "safeMint";
         JSONObject result = AbiContractUtil.sendData(contractAddr, searchMethod, operateId, contractCode, "tx", args);
         log.info("铸造请求返回结果：{}", result);
         return result;
