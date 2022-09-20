@@ -24,16 +24,16 @@ public class SafeTransfer {
      * @param exData    拓展参数
      * @return JSONObject
      */
-    public static JSONObject safeTransfer(String toAddress, String amount, String exData) {
+    public static JSONObject safeTransfer(String priKey, String toAddress, String amount, String exData) {
         AbiContractUtil.encInstance();
         //金额转换
         amount = AbiContractUtil.amountTransition(amount);
         //根据私钥获取地址
-        KeyPairs keyPairs = CryptoUtil.privatekeyToAccountKey(Config.getPrivateKey());
+        KeyPairs keyPairs = CryptoUtil.privatekeyToAccountKey(priKey);
         String address = keyPairs.getAddress();
         //创建实例并生成转账txData
         TransferInfo transferInfo = new TransferInfo(toAddress, amount);
-        String transferToTx = HiChain.getTransferToTx(address, Account.getNonce(address), Config.getPrivateKey(), exData, transferInfo);
+        String transferToTx = HiChain.getTransferToTx(address, Account.getNonce(address), priKey, exData, transferInfo);
         log.info("转账txData:" + transferToTx);
         //发送请求
         HashMap<String, Object> params = new HashMap<>();
