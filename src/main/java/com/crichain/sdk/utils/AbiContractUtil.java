@@ -25,11 +25,11 @@ public class AbiContractUtil {
     /**
      * 获取data
      *
-     * @param address 调用者地址
-     * @param nonce   链上nonce
-     * @param priKey  私钥
-     * @param param   合约配置
-     * @param args    参数数组
+     * @param callerAddress 调用者地址
+     * @param nonce         链上nonce
+     * @param priKey        私钥
+     * @param param         合约配置
+     * @param args          参数数组
      * @return String
      */
     private static String getData(String callerAddress, int nonce, String priKey, ContractParam param, String searchMethod, Object... args) {

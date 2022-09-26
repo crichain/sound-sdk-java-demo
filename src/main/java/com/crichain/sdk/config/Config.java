@@ -11,7 +11,7 @@ public class Config {
     /**
      * url接口请求地址
      */
-    private static String url;
+    private static String url = Server.TEST.url;
 //    /**
 //     * abi
 //     */
@@ -66,7 +66,7 @@ public class Config {
      *
      * @param server 服务器配置
      */
-    public void init(Server server) {
+    public static void init(Server server) {
         Config.url = server.url;
     }
 

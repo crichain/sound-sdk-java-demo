@@ -32,51 +32,35 @@
 ##### 初始化配置
 
 ```Java
-/**
-     * 初始化
-     * @param privateKey 私钥
-     * @param url 接口请求地址
-     * @param abi abi合约
-     * @param contractAddr 合约地址
-     */
-Config.init("be2xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","http://test.open-api.crichain.cn",ReadJsonUtil.getJson("src/main/resources/MyNft.json", "abi"),"0xxxxxxxxxxxxxxxxxxxxxxxx")
-```
+// 测试链
+Config.init(Server.TEST);
+// 正式链
+Config.init(Server.PROD);
 
-##### 获取abi
-
-```Java 
-/**
-     * 获取JSON文件中指定属性值
-     *
-     * @param path 文件路径
-     * @param param 属性值
-     * @return String
-     */
-String abi = ReadJsonUtil.getJson("src/main/resources/MyNft.json", "abi");
 ```
 
 ##### 获取opreateId
 
 ```Java
 /**
-     * 获取OpreateId
-     * @return String
-     */
+ * 获取OpreateId
+ * @return String
+ */
 String opreateId = AbiContractUtil.getOpreateId();
 ```
 
 ##### 获取密钥对
 
 ```Java
-		KeyPairEntity keyPair = KeyPair.getKeyPair();
-		//助记词
-        String mnemonicWork = keyPair.getMnemonicWork();
-		//私钥
-        String privateKey = keyPair.getPrivateKey();
-		//公钥
-        String publicKey = keyPair.getPublicKey();
-		//地址
-        String address = keyPair.getAddress();
+KeyPairEntity keyPair = KeyPair.getKeyPair();
+//助记词
+String mnemonicWork = keyPair.getMnemonicWork();
+//私钥
+String privateKey = keyPair.getPrivateKey();
+//公钥
+String publicKey = keyPair.getPublicKey();
+//地址
+String address = keyPair.getAddress();
 ```
 
 ##### 去除地址前缀0x
@@ -101,7 +85,7 @@ string result = Numeric.cleanHexPrefix("514f2b69fc3102829a25dba16575680f049a0932
      * @param privateKey 私钥
      * @param text       文本
      */
-String result = Sign.sign("b0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "123123");
+String result = Sign.sign("priKey", "123123");
 ```
 
 ##### 获取账户信息
@@ -131,70 +115,4 @@ JSONObject result = SafeTransfer.safeTransfer("61d4c124df65ba081992ff2a8c77c67a8
 
 #### 调用合约
 
-##### 铸造
-
-```Java
-/**
-     * 铸造
-     * @param contractAddr 合约地址
-     * @param searchMethod 方法
-     * @param operateId 操作ID
-     * @param contractCode 合约模板代码
-     * @param args （参数数组）address、tokenID、url
-     *【Biginteger 16进制】to 
-     *【Biginteger】 tokenID 
-     *【String】 url
-     * @return JSONObject
-     */
-JSONObject result = Contract.safeMint("0x514f2b69fc3102829a25dba16575680f049a0932", "safeMint", "123132","NFT_A", new BigInteger(Numeric.cleanHexPrefix("0x514f2b69fc3102829a25dba16575680f049a0932"), 16), new BigInteger("123123"), "https://ipfs.infura.io/ipfs/QmbApAkdkGj4jFu6Jr2thcNHraRBYJ7nEL7cvpabM7bLcK");
-```
-
-##### 销毁
-
-```Java
-/**
-     * 铸造
-     * @param contractAddr 合约地址
-     * @param searchMethod 方法
-     * @param operateId 操作ID 
-     * @param contractCode 合约模板代码
-     * @param args (参数数组) tokenID
-     *【BigInteger】tokenID 
-     * @return JSONObject
-     */
-JSONObject result = Contract.burn("0x514f2b69fc3102829a25dba16575680f049a0932", "burn","123132","NFT_A",new BigInteger("123123"));
-```
-
-##### 转账
-
-```Java
-/**
-     * 转账
-     * @param contractAddr 合约地址
-     * @param searchMethod 方法
-     * @param operateId 操作ID 
-     * @param contractCode 合约模板代码
-     * @param args （形参数组）from、to、tokenID
-     *【Biginteger 16进制】from
-     *【Biginteger 16进制】to
-     *【Biginteger】tokenID
-     * @return JSONObject
-     */
-JSONObject result = Contract.safeTransfer("0xce7e273ed4081e6309664734dc7a162e2e20e6cd", "safeTransfer","123132","NFT_A", new BigInteger(Numeric.cleanHexPrefix("0x514f2b69fc3102829a25dba16575680f049a0932"), 16), new BigInteger(Numeric.cleanHexPrefix("0x61d4c124df65ba081992ff2a8c77c67a8b3cb77c"), 16), new BigInteger("123123"));
-```
-
-##### TokenUrl地址
-
-```Java
-/**
-     * 铸造
-     * @param contractAddr 合约地址
-     * @param searchMethod 方法
-     * @param operateId 操作ID
-     * @param contractCode 合约模板代码
-     * @param args (参数数组) tokenID 
-     *【BigInteger】 tokenID
-     * @return JSONObject
-     */
-JSONObject result = Contract.tokenUrl("0x514f2b69fc3102829a25dba16575680f049a0932", "tokenURI","123132","NFT_A",new BigInteger("123123"));
-```
+合约调用见 测试类 ContractTest

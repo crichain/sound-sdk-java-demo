@@ -3,7 +3,9 @@ package com.crichain.sdk.crichain;
 
 import com.alibaba.fastjson.JSONObject;
 
+import com.crichain.sdk.config.Config;
 import com.crichain.sdk.constant.ContractAbi;
+import com.crichain.sdk.constant.Server;
 import com.develop.mnemonic.utils.Numeric;
 import org.junit.Test;
 
@@ -15,6 +17,10 @@ public class ContractTest {
     Contract contract = new Contract(ContractAbi.NFT_A);
 
     String priKey = "UserPriKey";
+
+    static {
+        Config.init(Server.TEST);
+    }
 
     /**
      * 铸造
