@@ -4,7 +4,7 @@ public interface Constants {
 
     String OPEN_API_TEST = "http://test.open-api.crichain.cn";
 
-    String OPEN_API_PROD = "";
+    String OPEN_API_PROD = "https://openapi.crichain.cn";
 
 
 
