@@ -25,23 +25,22 @@ public class AbiContractUtil {
     /**
      * 获取data
      *
-     * @param priKey 私钥
-     * @param param  合约配置
-     * @param args   参数数组
+     * @param address 调用者地址
+     * @param nonce   链上nonce
+     * @param priKey  私钥
+     * @param param   合约配置
+     * @param args    参数数组
      * @return String
      */
-    public static String getData(String priKey, ContractParam param, String searchMethod, Object... args) {
+    private static String getData(String callerAddress, int nonce, String priKey, ContractParam param, String searchMethod, Object... args) {
         EncInstance encInstance = new EncInstance();
         encInstance.startup();
         CryptoUtil.crypto = encInstance;
-        //通过私钥获取地址
-        KeyPairs keyPairs = CryptoUtil.privatekeyToAccountKey(priKey);
-        String address = keyPairs.getAddress();
         //组装查询bincode
         String functionBinCode = org.brewchain.sdk.util.ContractUtil.getFunctionBinCode(param.contractAbi.abi, searchMethod, args);
         log.info(searchMethod + "-functionBinCode---" + functionBinCode);
         //执行合约
-        String contractCallTx = HiChain.getContractCallTx(address, Account.getNonce(address), priKey, param.contractAddr, functionBinCode, "");
+        String contractCallTx = HiChain.getContractCallTx(callerAddress, nonce, priKey, param.contractAddr, functionBinCode, "");
         log.info(searchMethod + "-contractCallTx---" + contractCallTx);
         return contractCallTx;
     }
@@ -49,14 +48,16 @@ public class AbiContractUtil {
     /**
      * 发送请求
      *
-     * @param priKey 私钥
-     * @param param  合约配置
-     * @param args   参数数组
+     * @param callerAddress 调用者地址
+     * @param nonce         链上nonce
+     * @param priKey        私钥
+     * @param param         合约配置
+     * @param args          参数数组
      * @return JSONObject
      */
-    public static JSONObject sendTxData(String priKey, ContractParam param, String searchMethod, String operateId, Object... args) {
+    public static JSONObject sendTxData(String callerAddress, int nonce, String priKey, ContractParam param, String searchMethod, String operateId, Object... args) {
         //获取data
-        String data = AbiContractUtil.getData(priKey, param, searchMethod, args);
+        String data = AbiContractUtil.getData(callerAddress, nonce, priKey, param, searchMethod, args);
         //发送请求
         HashMap<String, Object> params = new HashMap<>();
         params.put("method", searchMethod);
@@ -71,14 +72,16 @@ public class AbiContractUtil {
     /**
      * 发送请求
      *
-     * @param priKey 私钥
-     * @param param  合约配置
-     * @param args   参数数组
+     * @param callerAddress 调用者地址
+     * @param nonce         链上nonce
+     * @param priKey        私钥
+     * @param param         合约配置
+     * @param args          参数数组
      * @return JSONObject
      */
-    public static JSONObject sendViewData(String priKey, ContractParam param, String searchMethod, String operateId, Object... args) {
+    public static JSONObject sendViewData(String callerAddress, int nonce, String priKey, ContractParam param, String searchMethod, String operateId, Object... args) {
         //获取data
-        String data = AbiContractUtil.getData(priKey, param, searchMethod, args);
+        String data = AbiContractUtil.getData(callerAddress, nonce, priKey, param, searchMethod, args);
         //发送请求
         HashMap<String, Object> params = new HashMap<>();
         params.put("method", searchMethod);
