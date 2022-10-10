@@ -26,7 +26,7 @@ public class Account {
         HashMap<String, Object> params = new HashMap<>();
         params.put("address", address);
         JSONObject result = HttpClientUtil.doGet(Config.getUrl() + "/chain/account.json", params);
-        System.out.println("账户信息：" + result);
+//        System.out.println("账户信息：" + result);
         return result;
     }
 
