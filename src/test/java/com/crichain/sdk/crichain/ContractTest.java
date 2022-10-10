@@ -7,6 +7,8 @@ import com.crichain.sdk.config.Config;
 import com.crichain.sdk.constant.ContractAbi;
 import com.crichain.sdk.constant.Server;
 import com.develop.mnemonic.utils.Numeric;
+import org.brewchain.mcore.crypto.impl.EncInstance;
+import org.brewchain.sdk.util.CryptoUtil;
 import org.junit.Test;
 
 import java.math.BigInteger;
@@ -20,6 +22,9 @@ public class ContractTest {
 
     static {
         Config.init(Server.TEST);
+        EncInstance encInstance = new EncInstance();
+        encInstance.startup();
+        CryptoUtil.crypto = encInstance;
     }
 
     /**
@@ -47,8 +52,7 @@ public class ContractTest {
      */
     @Test
     public void tokenUrl() {
-        String operateId = "" + System.currentTimeMillis();
-        JSONObject result = contract.tokenUrl(priKey, "0xce7e273ed4081e6309664734dc7a162e2e20e6cd", operateId, "6000012");
+        JSONObject result = contract.tokenUrl("0x139922924c83b4262bea490cb90279701b733bd8", "1001111680");
         System.out.println(result);
     }
 
@@ -97,8 +101,7 @@ public class ContractTest {
      */
     @Test
     public void getWhiteList() {
-        String operateId = "" + System.currentTimeMillis();
-        JSONObject result = contract.getWhiteList(priKey, "0xce7e273ed4081e6309664734dc7a162e2e20e6cd", operateId, "514f2b69fc3102829a25dba16575680f049a0932");
+        JSONObject result = contract.getWhiteList("0xd857520f2f7e6b933b23a9eba47831b687813361", "0");
         System.out.println(result);
     }
 
@@ -107,8 +110,7 @@ public class ContractTest {
      */
     @Test
     public void inWhiteList() {
-        String operateId = "" + System.currentTimeMillis();
-        JSONObject result = contract.inWhiteList(priKey, "0xce7e273ed4081e6309664734dc7a162e2e20e6cd", operateId, "514f2b69fc3102829a25dba16575680f049a0932");
+        JSONObject result = contract.inWhiteList("0xd857520f2f7e6b933b23a9eba47831b687813361", "0x95aba0fdff121a98dd8007c96d3324f64b8db467");
         System.out.println(result);
     }
 

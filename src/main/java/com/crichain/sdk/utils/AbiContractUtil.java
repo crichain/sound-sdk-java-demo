@@ -39,10 +39,10 @@ public class AbiContractUtil {
         CryptoUtil.crypto = encInstance;
         //组装查询bincode
         String functionBinCode = org.brewchain.sdk.util.ContractUtil.getFunctionBinCode(param.contractAbi.abi, searchMethod, args);
-        Log.info(log,searchMethod + "-functionBinCode---" + functionBinCode);
+        Log.info(log, searchMethod + "-functionBinCode---" + functionBinCode);
         //执行合约
         String contractCallTx = HiChain.getContractCallTx(callerAddress, nonce, priKey, param.contractAddr, functionBinCode, "");
-        Log.info(log,searchMethod + "-contractCallTx---" + contractCallTx);
+        Log.info(log, searchMethod + "-contractCallTx---" + contractCallTx);
         return contractCallTx;
     }
 
@@ -73,23 +73,20 @@ public class AbiContractUtil {
     /**
      * 发送请求
      *
-     * @param callerAddress 调用者地址
-     * @param nonce         链上nonce
-     * @param priKey        私钥
      * @param param         合约配置
      * @param args          参数数组
      * @return JSONObject
      */
-    public static JSONObject sendViewData(String callerAddress, int nonce, String priKey, ContractParam param, String searchMethod, String operateId, Object... args) {
+    public static JSONObject sendViewData(ContractParam param, String searchMethod, Object... args) {
         //获取data
-        String data = AbiContractUtil.getData(callerAddress, nonce, priKey, param, searchMethod, args);
+//        String data = AbiContractUtil.getData(callerAddress, nonce, priKey, param, searchMethod, args);
         //发送请求
         HashMap<String, Object> params = new HashMap<>();
         params.put("method", searchMethod);
-        params.put("data", data);
+//        params.put("data", data);
         params.put("functionType", "view");
         params.put("contractCode", param.contractAbi.name());
-        params.put("operateId", operateId);
+//        params.put("operateId", operateId);
 
         params.put("contractAddress", param.contractAddr);
         params.put("params", args);
