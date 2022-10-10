@@ -96,14 +96,14 @@ public class ContractTest {
         System.out.println(result);
     }
 
-    /**
-     * 获取白名单
-     */
-    @Test
-    public void getWhiteList() {
-        JSONObject result = contract.getWhiteList("0xd857520f2f7e6b933b23a9eba47831b687813361", "0");
-        System.out.println(result);
-    }
+//    /**
+//     * 获取白名单
+//     */
+//    @Test
+//    public void getWhiteList() {
+//        JSONObject result = contract.getWhiteList("0xd857520f2f7e6b933b23a9eba47831b687813361", "0");
+//        System.out.println(result);
+//    }
 
     /**
      * 是否在白名单

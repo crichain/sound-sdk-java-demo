@@ -313,19 +313,19 @@ public class Contract {
         return result;
     }
 
-    /**
-     * 获取白名单
-     *
-     * @param contractAddr 合约地址
-     * @param address      查询的地址
-     * @return JSONObject
-     */
-    public JSONObject getWhiteList(String contractAddr, String address) {
-        ContractParam param = new ContractParam(contractAddr, contractAbi);
-        JSONObject result = AbiContractUtil.sendViewData(param, "getWhiteList", new BigInteger(address));
-        Log.info(log, "获取白名单请求返回结果：{}", result);
-        return result;
-    }
+//    /**
+//     * 获取白名单
+//     *
+//     * @param contractAddr 合约地址
+//     * @param address      查询的地址
+//     * @return JSONObject
+//     */
+//    public JSONObject getWhiteList(String contractAddr, String address) {
+//        ContractParam param = new ContractParam(contractAddr, contractAbi);
+//        JSONObject result = AbiContractUtil.sendViewData(param, "getWhiteList", new BigInteger(address));
+//        Log.info(log, "获取白名单请求返回结果：{}", result);
+//        return result;
+//    }
 
 
     /**
