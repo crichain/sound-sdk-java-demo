@@ -3,6 +3,7 @@ package com.crichain.sdk.utils;
 import com.alibaba.fastjson.JSONObject;
 import com.crichain.sdk.config.Config;
 import com.crichain.sdk.crichain.Account;
+import com.crichain.sdk.crichain.Log;
 import com.crichain.sdk.entity.ContractParam;
 import lombok.extern.slf4j.Slf4j;
 import org.brewchain.mcore.crypto.KeyPairs;
@@ -38,10 +39,10 @@ public class AbiContractUtil {
         CryptoUtil.crypto = encInstance;
         //组装查询bincode
         String functionBinCode = org.brewchain.sdk.util.ContractUtil.getFunctionBinCode(param.contractAbi.abi, searchMethod, args);
-        log.info(searchMethod + "-functionBinCode---" + functionBinCode);
+        Log.info(log,searchMethod + "-functionBinCode---" + functionBinCode);
         //执行合约
         String contractCallTx = HiChain.getContractCallTx(callerAddress, nonce, priKey, param.contractAddr, functionBinCode, "");
-        log.info(searchMethod + "-contractCallTx---" + contractCallTx);
+        Log.info(log,searchMethod + "-contractCallTx---" + contractCallTx);
         return contractCallTx;
     }
 

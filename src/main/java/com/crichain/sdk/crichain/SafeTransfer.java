@@ -34,7 +34,7 @@ public class SafeTransfer {
         //创建实例并生成转账txData
         TransferInfo transferInfo = new TransferInfo(toAddress, amount);
         String transferToTx = HiChain.getTransferToTx(address, Account.getNonce(address), priKey, exData, transferInfo);
-        log.info("转账txData:" + transferToTx);
+        Log.info(log, "转账txData:" + transferToTx);
         //发送请求
         HashMap<String, Object> params = new HashMap<>();
         params.put("txData", transferToTx);
@@ -57,7 +57,7 @@ public class SafeTransfer {
         //创建实例并生成转账txData
         TransferInfo transferInfo = new TransferInfo(toAddress, amount);
         String transferToTx = HiChain.getTransferToTx(callerAddress, nonce, priKey, exData, transferInfo);
-        log.info("转账txData:" + transferToTx);
+        Log.info(log, "转账txData:" + transferToTx);
         //发送请求
         HashMap<String, Object> params = new HashMap<>();
         params.put("txData", transferToTx);
@@ -75,7 +75,7 @@ public class SafeTransfer {
         HashMap<String, Object> params = new HashMap<>();
         params.put("hash", hash);
         JSONObject result = HttpClientUtil.doGet(Config.getUrl() + "/chain/transaction.json", params);
-        log.info("交易信息请求结果为：{}", result);
+        Log.info(log, "交易信息请求结果为：{}", result);
         return result;
     }
 

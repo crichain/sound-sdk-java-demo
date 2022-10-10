@@ -41,7 +41,7 @@ public class Contract {
         String callerAddress = KeyPair.GetAddressByPriKey(priKey);
         int nonce = Account.getNonce(callerAddress);
         JSONObject result = AbiContractUtil.sendTxData(callerAddress, nonce, priKey, param, "burn", operateId, new BigInteger(tokenId));
-        log.info("销毁请求返回结果：{}", result);
+        Log.info(log,"销毁请求返回结果：{}", result);
         return result;
     }
 
@@ -58,7 +58,7 @@ public class Contract {
     public JSONObject burn(String callerAddress, int nonce, String priKey, String contractAddr, String operateId, String tokenId) {
         ContractParam param = new ContractParam(contractAddr, contractAbi);
         JSONObject result = AbiContractUtil.sendTxData(callerAddress, nonce, priKey, param, "burn", operateId, new BigInteger(tokenId));
-        log.info("销毁请求返回结果：{}", result);
+        Log.info(log,"销毁请求返回结果：{}", result);
         return result;
     }
 
@@ -77,7 +77,7 @@ public class Contract {
         int nonce = Account.getNonce(callerAddress);
         JSONObject result = AbiContractUtil.sendTxData(callerAddress, nonce, priKey, param, "safeMint", operateId,
                 new BigInteger(Numeric.cleanHexPrefix(toAddress), 16), uri);
-        log.info("铸造请求返回结果：{}", result);
+        Log.info(log,"铸造请求返回结果：{}", result);
         return result;
     }
 
@@ -96,7 +96,7 @@ public class Contract {
         ContractParam param = new ContractParam(contractAddr, ContractAbi.NFT_B);
         JSONObject result = AbiContractUtil.sendTxData(callerAddress, nonce, priKey, param, "safeMint", operateId,
                 new BigInteger(Numeric.cleanHexPrefix(toAddress), 16), uri);
-        log.info("铸造请求返回结果：{}", result);
+        Log.info(log,"铸造请求返回结果：{}", result);
         return result;
     }
 
@@ -116,7 +116,7 @@ public class Contract {
         int nonce = Account.getNonce(callerAddress);
         JSONObject result = AbiContractUtil.sendTxData(callerAddress, nonce, priKey, param, "safeMint", operateId,
                 new BigInteger(Numeric.cleanHexPrefix(toAddress), 16), new BigInteger(tokenId), uri);
-        log.info("铸造请求返回结果：{}", result);
+        Log.info(log,"铸造请求返回结果：{}", result);
         return result;
     }
 
@@ -136,7 +136,7 @@ public class Contract {
         ContractParam param = new ContractParam(contractAddr, contractAbi);
         JSONObject result = AbiContractUtil.sendTxData(callerAddress, nonce, priKey, param, "safeMint", operateId,
                 new BigInteger(Numeric.cleanHexPrefix(toAddress), 16), new BigInteger(tokenId), uri);
-        log.info("铸造请求返回结果：{}", result);
+        Log.info(log,"铸造请求返回结果：{}", result);
         return result;
     }
 
@@ -154,7 +154,7 @@ public class Contract {
         String callerAddress = KeyPair.GetAddressByPriKey(priKey);
         int nonce = Account.getNonce(callerAddress);
         JSONObject result = AbiContractUtil.sendViewData(callerAddress, nonce, priKey, param, "tokenURI", operateId, new BigInteger(tokenId));
-        log.info("获取TokenUri请求返回结果：{}", result);
+        Log.info(log,"获取TokenUri请求返回结果：{}", result);
         return result;
     }
 
@@ -172,7 +172,7 @@ public class Contract {
     public JSONObject tokenUrl(String callerAddress, int nonce, String priKey, String contractAddr, String operateId, String tokenId) {
         ContractParam param = new ContractParam(contractAddr, contractAbi);
         JSONObject result = AbiContractUtil.sendViewData(callerAddress, nonce, priKey, param, "tokenURI", operateId, new BigInteger(tokenId));
-        log.info("获取TokenUri请求返回结果：{}", result);
+        Log.info(log,"获取TokenUri请求返回结果：{}", result);
         return result;
     }
 
@@ -190,7 +190,7 @@ public class Contract {
         String callerAddress = KeyPair.GetAddressByPriKey(priKey);
         int nonce = Account.getNonce(callerAddress);
         JSONObject result = AbiContractUtil.sendTxData(callerAddress, nonce, priKey, param, "addWhiteList", operateId, new BigInteger(whiteAddress, 16));
-        log.info("添加白名单请求返回结果：{}", result);
+        Log.info(log,"添加白名单请求返回结果：{}", result);
         return result;
     }
 
@@ -208,7 +208,7 @@ public class Contract {
     public JSONObject addWhiteList(String callerAddress, int nonce, String priKey, String contractAddr, String operateId, String whiteAddress) {
         ContractParam param = new ContractParam(contractAddr, contractAbi);
         JSONObject result = AbiContractUtil.sendTxData(callerAddress, nonce, priKey, param, "addWhiteList", operateId, new BigInteger(whiteAddress, 16));
-        log.info("添加白名单请求返回结果：{}", result);
+        Log.info(log,"添加白名单请求返回结果：{}", result);
         return result;
     }
 
@@ -226,7 +226,7 @@ public class Contract {
         String callerAddress = KeyPair.GetAddressByPriKey(priKey);
         int nonce = Account.getNonce(callerAddress);
         JSONObject result = AbiContractUtil.sendTxData(callerAddress, nonce, priKey, param, "delWhiteList", operateId, new BigInteger(whiteAddress, 16));
-        log.info("删除白名单请求返回结果：{}", result);
+        Log.info(log,"删除白名单请求返回结果：{}", result);
         return result;
     }
 
@@ -244,7 +244,7 @@ public class Contract {
     public JSONObject delWhiteList(String callerAddress, int nonce, String priKey, String contractAddr, String operateId, String whiteAddress) {
         ContractParam param = new ContractParam(contractAddr, contractAbi);
         JSONObject result = AbiContractUtil.sendTxData(callerAddress, nonce, priKey, param, "delWhiteList", operateId, new BigInteger(whiteAddress, 16));
-        log.info("删除白名单请求返回结果：{}", result);
+        Log.info(log,"删除白名单请求返回结果：{}", result);
         return result;
     }
 
@@ -268,7 +268,7 @@ public class Contract {
                 , new BigInteger(Numeric.cleanHexPrefix(fromAddress), 16)
                 , new BigInteger(Numeric.cleanHexPrefix(toAddress), 16)
                 , new BigInteger(tokenId));
-        log.info("转账NFT请求返回结果：{}", result);
+        Log.info(log,"转账NFT请求返回结果：{}", result);
         return result;
     }
 
@@ -291,7 +291,7 @@ public class Contract {
                 , new BigInteger(Numeric.cleanHexPrefix(fromAddress), 16)
                 , new BigInteger(Numeric.cleanHexPrefix(toAddress), 16)
                 , new BigInteger(tokenId));
-        log.info("转账NFT请求返回结果：{}", result);
+        Log.info(log,"转账NFT请求返回结果：{}", result);
         return result;
     }
 
@@ -311,7 +311,7 @@ public class Contract {
         int nonce = Account.getNonce(callerAddress);
         JSONObject result = AbiContractUtil.sendTxData(callerAddress, nonce, priKey, param, "setApprovalForAll", operateId,
                 new BigInteger(address, 16), approval);
-        log.info("设置许可请求返回结果：{}", result);
+        Log.info(log,"设置许可请求返回结果：{}", result);
         return result;
     }
 
@@ -331,7 +331,7 @@ public class Contract {
         ContractParam param = new ContractParam(contractAddr, contractAbi);
         JSONObject result = AbiContractUtil.sendTxData(callerAddress, nonce, priKey, param, "setApprovalForAll", operateId,
                 new BigInteger(address, 16), approval);
-        log.info("设置许可请求返回结果：{}", result);
+        Log.info(log,"设置许可请求返回结果：{}", result);
         return result;
     }
 
@@ -349,7 +349,7 @@ public class Contract {
         String callerAddress = KeyPair.GetAddressByPriKey(priKey);
         int nonce = Account.getNonce(callerAddress);
         JSONObject result = AbiContractUtil.sendViewData(callerAddress, nonce, priKey, param, "getWhiteList", operateId, new BigInteger(address, 16));
-        log.info("获取白名单请求返回结果：{}", result);
+        Log.info(log,"获取白名单请求返回结果：{}", result);
         return result;
     }
 
@@ -367,7 +367,7 @@ public class Contract {
     public JSONObject getWhiteList(String callerAddress, int nonce, String priKey, String contractAddr, String operateId, String address) {
         ContractParam param = new ContractParam(contractAddr, contractAbi);
         JSONObject result = AbiContractUtil.sendViewData(callerAddress, nonce, priKey, param, "getWhiteList", operateId, new BigInteger(address, 16));
-        log.info("获取白名单请求返回结果：{}", result);
+        Log.info(log,"获取白名单请求返回结果：{}", result);
         return result;
     }
 
@@ -385,7 +385,7 @@ public class Contract {
         String callerAddress = KeyPair.GetAddressByPriKey(priKey);
         int nonce = Account.getNonce(callerAddress);
         JSONObject result = AbiContractUtil.sendViewData(callerAddress, nonce, priKey, param, "inWhiteList", operateId, new BigInteger(address, 16));
-        log.info("是否在白名单请求返回结果：{}", result);
+        Log.info(log,"是否在白名单请求返回结果：{}", result);
         return result;
     }
 
@@ -403,7 +403,7 @@ public class Contract {
     public JSONObject inWhiteList(String callerAddress, int nonce, String priKey, String contractAddr, String operateId, String address) {
         ContractParam param = new ContractParam(contractAddr, contractAbi);
         JSONObject result = AbiContractUtil.sendViewData(callerAddress, nonce, priKey, param, "inWhiteList", operateId, new BigInteger(address, 16));
-        log.info("是否在白名单请求返回结果：{}", result);
+        Log.info(log,"是否在白名单请求返回结果：{}", result);
         return result;
     }
 }

@@ -23,10 +23,10 @@ public class KeyPair {
         String words = WalletUtil.getMnemonic();
         //助记词生成公私钥地址对
         KeyPairs kp = WalletUtil.getKeyPair(words);
-        log.info("助记词：{}", words);
-        log.info("地址：{}", "0x" + kp.getAddress());
-        log.info("公钥：{}", kp.getPubkey());
-        log.info("私钥：{}", kp.getPrikey());
+        Log.info(log,"助记词：{}", words);
+        Log.info(log,"地址：{}", "0x" + kp.getAddress());
+        Log.info(log,"公钥：{}", kp.getPubkey());
+        Log.info(log,"私钥：{}", kp.getPrikey());
         return new KeyPairEntity(words, kp.getPrikey(), kp.getPubkey(), "0x" + kp.getAddress());
     }
 

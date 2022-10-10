@@ -22,8 +22,8 @@ public class Sign {
     public static String sign(String privateKey, String text) {
         AbiContractUtil.encInstance();
         //数据签名
-        String signHex = CryptoUtil.signHex(privateKey, new BigInteger(text,16).toByteArray());
-        log.info("数据签名：{}", signHex);
+        String signHex = CryptoUtil.signHex(privateKey, new BigInteger(text, 16).toByteArray());
+        Log.info(log, "数据签名：{}", signHex);
         return signHex;
     }
 }
