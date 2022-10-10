@@ -21,7 +21,7 @@ public class Account {
      * @return JSONObject
      */
     public static JSONObject accountInfo(String address) {
-        AbiContractUtil.encInstance();
+//        AbiContractUtil.encInstance();
         //发送请求
         HashMap<String, Object> params = new HashMap<>();
         params.put("address", address);

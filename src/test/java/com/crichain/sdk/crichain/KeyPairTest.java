@@ -1,10 +1,21 @@
 package com.crichain.sdk.crichain;
 
+import com.crichain.sdk.config.Config;
+import com.crichain.sdk.constant.Server;
 import com.crichain.sdk.entity.KeyPairEntity;
+import org.brewchain.mcore.crypto.impl.EncInstance;
+import org.brewchain.sdk.util.CryptoUtil;
 import org.junit.Test;
 
 
 public class KeyPairTest {
+
+    static {
+        Config.init(Server.TEST);
+        EncInstance encInstance = new EncInstance();
+        encInstance.startup();
+        CryptoUtil.crypto = encInstance;
+    }
 
     /**
      * 获取密钥对

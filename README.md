@@ -36,6 +36,9 @@
 Config.init(Server.TEST);
 // 正式链
 Config.init(Server.PROD);
+EncInstance encInstance = new EncInstance();
+encInstance.startup();
+CryptoUtil.crypto = encInstance;
 
 ```
 

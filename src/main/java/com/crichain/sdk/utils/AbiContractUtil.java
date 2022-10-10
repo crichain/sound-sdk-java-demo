@@ -34,9 +34,9 @@ public class AbiContractUtil {
      * @return String
      */
     private static String getData(String callerAddress, int nonce, String priKey, ContractParam param, String searchMethod, Object... args) {
-        EncInstance encInstance = new EncInstance();
-        encInstance.startup();
-        CryptoUtil.crypto = encInstance;
+//        EncInstance encInstance = new EncInstance();
+//        encInstance.startup();
+//        CryptoUtil.crypto = encInstance;
         //组装查询bincode
         String functionBinCode = org.brewchain.sdk.util.ContractUtil.getFunctionBinCode(param.contractAbi.abi, searchMethod, args);
         Log.info(log, searchMethod + "-functionBinCode---" + functionBinCode);
@@ -94,15 +94,15 @@ public class AbiContractUtil {
         return HttpClientUtil.doPost(Config.getUrl() + "/chain/callcontract.json", params);
     }
 
-    /**
-     * 创建实例
-     */
-    public static void encInstance() {
-        //创建实例
-        EncInstance encInstance = new EncInstance();
-        encInstance.startup();
-        CryptoUtil.crypto = encInstance;
-    }
+//    /**
+//     * 创建实例
+//     */
+//    public static void encInstance() {
+//        //创建实例
+//        EncInstance encInstance = new EncInstance();
+//        encInstance.startup();
+//        CryptoUtil.crypto = encInstance;
+//    }
 
     /**
      * 金额转换

@@ -1,11 +1,21 @@
 package com.crichain.sdk.crichain;
 
 import com.alibaba.fastjson.JSONObject;
+import com.crichain.sdk.config.Config;
+import com.crichain.sdk.constant.Server;
+import org.brewchain.mcore.crypto.impl.EncInstance;
+import org.brewchain.sdk.util.CryptoUtil;
 import org.junit.Test;
 
 
-
 public class AccountTest {
+
+    static {
+        Config.init(Server.TEST);
+        EncInstance encInstance = new EncInstance();
+        encInstance.startup();
+        CryptoUtil.crypto = encInstance;
+    }
 
     /**
      * 获取账户信息

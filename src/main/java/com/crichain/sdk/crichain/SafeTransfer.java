@@ -25,7 +25,7 @@ public class SafeTransfer {
      * @return JSONObject
      */
     public static JSONObject safeTransfer(String priKey, String toAddress, String amount, String exData) {
-        AbiContractUtil.encInstance();
+//        AbiContractUtil.encInstance();
         //金额转换
         amount = AbiContractUtil.amountTransition(amount);
         //根据私钥获取地址
@@ -51,7 +51,7 @@ public class SafeTransfer {
      * @return JSONObject
      */
     public static JSONObject safeTransfer(String callerAddress, int nonce, String priKey, String toAddress, String amount, String exData) {
-        AbiContractUtil.encInstance();
+//        AbiContractUtil.encInstance();
         //金额转换
         amount = AbiContractUtil.amountTransition(amount);
         //创建实例并生成转账txData

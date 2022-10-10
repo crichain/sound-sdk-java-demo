@@ -18,7 +18,7 @@ public class KeyPair {
      * 获取密钥对
      */
     public static KeyPairEntity getKeyPair() {
-        AbiContractUtil.encInstance();
+//        AbiContractUtil.encInstance();
         //生成助记词
         String words = WalletUtil.getMnemonic();
         //助记词生成公私钥地址对

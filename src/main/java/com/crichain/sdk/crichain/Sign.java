@@ -20,7 +20,7 @@ public class Sign {
      * @param text       文本
      */
     public static String sign(String privateKey, String text) {
-        AbiContractUtil.encInstance();
+//        AbiContractUtil.encInstance();
         //数据签名
         String signHex = CryptoUtil.signHex(privateKey, new BigInteger(text, 16).toByteArray());
         Log.info(log, "数据签名：{}", signHex);
